@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    [SerializeField] private Button quitButton;
+
+    private void Awake() {
+        quitButton.onClick.AddListener(() => {
+            Application.Quit();
+        });
+    }
 
     private void Start() {
         GameManager.Instance.OnStateChanged += GameManager_OnStateChanged;
